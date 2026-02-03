@@ -4,7 +4,7 @@ const baseUrl = 'https://petstore.swagger.io/v2';
 
 describe('PetStore - API Testing', () => {
     const user = {
-        id: 0,
+        id: 110,
         username: "test_user",
         firstName: "test",
         lastName: "user",
@@ -15,19 +15,37 @@ describe('PetStore - API Testing', () => {
     };
 
     //crear usuario
-    it('Crear usuario', ()=>{
-        cy.request('POST', `${baseUrl}/user`, user).its('status').should('eq',200);
-    })
+    it('Crear usuario', () => {
+        cy.request('POST', `${baseUrl}/user`, user).its('status').should('eq', 200);
+    });
     //buscar usuario
-    it('buscar usuario', ()=>{
-        cy.request(`${baseUrl}/user/${user.username}`).its('status').should('eq',200);
-    })
+    it('buscar usuario', () => {
+        cy.request(`${baseUrl}/user/${user.username}`).its('status').should('eq', 200);
+    });
     //Actualizar usuario
-    it('Actualizar usuario', ()=>{
+    it('Actualizar usuario', () => {
+        const user_actualizado = {
+            id: 110,
+            username: "test_user",
+            firstName: "testActualizado",
+            lastName: "user",
+            email: "testactualizado@test.com",
+            password: "12345",
+            phone: "99999999",
+            userStatus: 0
+        };
         user.firstName = "nombre_actualizado";
         user.email = "correoactualizado@test.com";
-        cy.request('PUT', `${baseUrl}/user/${user.username}`, user).its('status').should('eq',200);
+        cy.request('PUT', `${baseUrl}/user/${user.username}`, user).then(response => {
+            expect(response.status).to.eq(200);
+        })
     })
-
-    
+    //buscar usuario
+    it('buscar usuario', () => {
+        cy.request(`${baseUrl}/user/test_user`).then(response => {
+            console.log(response.body.firstName)
+            expect(response.body.firstName).to.eq("nombre_actualizado")
+            expect(response.body.email).to.eq("correoactualizado@test.com")
+        });
+    });
 })
