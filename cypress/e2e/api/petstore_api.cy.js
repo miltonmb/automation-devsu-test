@@ -13,9 +13,13 @@ describe('PetStore - API Testing', () => {
         phone: "99999999",
         userStatus: 0
     };
-    
+
     //crear usuario
     it('Crear usuario', ()=>{
         cy.request('POST', `${baseUrl}/user`, user).its('status').should('eq',200);
+    })
+    //buscar usuario
+    it('buscar usuario', ()=>{
+        cy.request(`${baseUrl}/user/${user.username}`).its('status').should('eq',200);
     })
 })
