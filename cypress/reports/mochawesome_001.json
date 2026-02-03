@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-03T07:17:06.476Z",
+    "end": "2026-02-03T07:17:07.323Z",
+    "duration": 847,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "836f2766-5a1e-4409-a240-652549b970de",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\petstore_api.cy.js",
+      "file": "cypress\\e2e\\api\\petstore_api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+          "title": "PetStore - API Testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Crear usuario",
+              "fullTitle": "PetStore - API Testing Crear usuario",
+              "timedOut": null,
+              "duration": 509,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('POST', `${baseUrl}/user`, user).its('status').should('eq', 200);",
+              "err": {},
+              "uuid": "bb3bb4e3-5205-4127-bb89-5354b2269d99",
+              "parentUUID": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "buscar usuario",
+              "fullTitle": "PetStore - API Testing buscar usuario",
+              "timedOut": null,
+              "duration": 73,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(`${baseUrl}/user/${user.username}`).its('status').should('eq', 200);",
+              "err": {},
+              "uuid": "4c59529c-5725-40da-bb62-db5387532b92",
+              "parentUUID": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Actualizar usuario",
+              "fullTitle": "PetStore - API Testing Actualizar usuario",
+              "timedOut": null,
+              "duration": 75,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const user_actualizado = {\n  id: 110,\n  username: \"test_user\",\n  firstName: \"testActualizado\",\n  lastName: \"user\",\n  email: \"testactualizado@test.com\",\n  password: \"12345\",\n  phone: \"99999999\",\n  userStatus: 0\n};\nuser.firstName = \"nombre_actualizado\";\nuser.email = \"correoactualizado@test.com\";\ncy.request('PUT', `${baseUrl}/user/${user.username}`, user).then(response => {\n  expect(response.status).to.eq(200);\n});",
+              "err": {},
+              "uuid": "d0d71c5e-85ec-4dc3-9ee4-6090d4369e00",
+              "parentUUID": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "buscar usuario actualizado",
+              "fullTitle": "PetStore - API Testing buscar usuario actualizado",
+              "timedOut": null,
+              "duration": 71,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(`${baseUrl}/user/${user.username}`).then(response => {\n  console.log(response.body.firstName);\n  expect(response.body.firstName).to.eq(\"nombre_actualizado\");\n  expect(response.body.email).to.eq(\"correoactualizado@test.com\");\n});",
+              "err": {},
+              "uuid": "817501ec-6c4e-4580-ba67-9da5da8d319b",
+              "parentUUID": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Borrar usuario",
+              "fullTitle": "PetStore - API Testing Borrar usuario",
+              "timedOut": null,
+              "duration": 70,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('DELETE', `${baseUrl}/user/${user.username}`).its('status').should('eq', 200);",
+              "err": {},
+              "uuid": "79ee9dd3-d2b0-46d0-b068-ef42d8b4d9e4",
+              "parentUUID": "f9d2d946-1eea-40ce-9f20-e8de514ed072",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bb3bb4e3-5205-4127-bb89-5354b2269d99",
+            "4c59529c-5725-40da-bb62-db5387532b92",
+            "d0d71c5e-85ec-4dc3-9ee4-6090d4369e00",
+            "817501ec-6c4e-4580-ba67-9da5da8d319b",
+            "79ee9dd3-d2b0-46d0-b068-ef42d8b4d9e4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 798,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

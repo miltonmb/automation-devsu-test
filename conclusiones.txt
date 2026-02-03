@@ -1,0 +1,10 @@
+Conclusiones de automatización E2E para Ejercicio 3
+
+- Falta de ID unicos en los elementos HTML, esto dificultaba un poco y limita el alcance debido a que se buscaba en base al contenido solamente.
+- Redirecciones HTTP a HTTPS y viceversa, esto fue un problema ya que algunos test fallaban debido a que el origin de la url cambiaba, y se tuvo que utilizar el cy.origin para poder continuar los test.
+
+Conclusiones de Automatización API Ejercicio 3
+
+- El username no es unico a nivel del backend, por lo tanto se pueden crear el mismo usuario tantes veces siendo este diferente solamente de su ID.
+- Entonces al actualizar el usuario, no se garantiza que se actualiza un unico usuario y esto genera confusión al querer buscar otra vez un usuario actualizado entre tantos duplicados.
+- Esto afecta en gran consideración la confiabilidad de las pruebas.

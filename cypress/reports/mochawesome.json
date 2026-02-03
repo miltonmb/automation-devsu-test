@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-03T07:16:51.017Z",
+    "end": "2026-02-03T07:17:05.304Z",
+    "duration": 14287,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6dc0141a-0c84-4d50-9cd3-ca9a63cc6752",
+      "title": "",
+      "fullFile": "cypress\\e2e\\e2e\\cart_checkout.cy.js",
+      "file": "cypress\\e2e\\e2e\\cart_checkout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "11398d36-093a-408a-bf06-429d1cceb973",
+          "title": "Flujo compra como invitado",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "compra exitosa como invitado",
+              "fullTitle": "Flujo compra como invitado compra exitosa como invitado",
+              "timedOut": null,
+              "duration": 12683,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://opencart.abstracta.us/');\n//Agregar primer objeto al carrito        \ncy.contains('Canon EOS 5D').click();\ncy.get('select').select('15');\ncy.get('#button-cart').click();\ncy.visit('http://opencart.abstracta.us/');\n//agregar segundo objeto al carrito\ncy.contains('Phones & PDAs').click();\ncy.contains('HTC Touch HD').click();\ncy.get('#button-cart').click();\n//ver el carrito y comprar como guest\ncy.contains('Shopping Cart').click();\ncy.contains('Checkout').click();\ncy.origin('https://opencart.abstracta.us', () => {\n  cy.get('input[value=\"guest\"]').check();\n  cy.get('#button-account').click();\n  cy.get('#input-payment-firstname').type('Milton');\n  cy.get('#input-payment-lastname').type('Martinez');\n  cy.get('#input-payment-email').type('test@test.com');\n  cy.get('#input-payment-telephone').type('33159971');\n  cy.get('#input-payment-address-1').type('Residencial de prueba 1234');\n  cy.get('#input-payment-city').type('Tegucigalpa');\n  cy.get('#input-payment-postcode').type('11101');\n  cy.get('#input-payment-country').select('95');\n  cy.get('#input-payment-zone').select('1399');\n  cy.get('#button-guest').click();\n  cy.get('#button-shipping-method').click();\n  cy.get('input[value=\"cod\"]').check();\n  cy.get('input[name=\"agree\"]').check();\n  cy.get('#button-payment-method').click();\n  cy.get('#button-confirm').click();\n});\ncy.contains('Your order has been placed!', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "7cd8bdc3-96ee-4501-9d6f-f62718e722f1",
+              "parentUUID": "11398d36-093a-408a-bf06-429d1cceb973",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7cd8bdc3-96ee-4501-9d6f-f62718e722f1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12683,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
