@@ -22,4 +22,12 @@ describe('PetStore - API Testing', () => {
     it('buscar usuario', ()=>{
         cy.request(`${baseUrl}/user/${user.username}`).its('status').should('eq',200);
     })
+    //Actualizar usuario
+    it('Actualizar usuario', ()=>{
+        user.firstName = "nombre_actualizado";
+        user.email = "correoactualizado@test.com";
+        cy.request('PUT', `${baseUrl}/user/${user.username}`, user).its('status').should('eq',200);
+    })
+
+    
 })
