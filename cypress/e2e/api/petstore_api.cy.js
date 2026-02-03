@@ -41,11 +41,16 @@ describe('PetStore - API Testing', () => {
         })
     })
     //buscar usuario
-    it('buscar usuario', () => {
-        cy.request(`${baseUrl}/user/test_user`).then(response => {
+    it('buscar usuario actualizado', () => {
+        cy.request(`${baseUrl}/user/${user.username}`).then(response => {
             console.log(response.body.firstName)
             expect(response.body.firstName).to.eq("nombre_actualizado")
             expect(response.body.email).to.eq("correoactualizado@test.com")
         });
     });
+
+    //borrar usuario
+    it('Borrar usuario', ()=>{
+        cy.request('DELETE',`${baseUrl}/user/${user.username}`).its('status').should('eq', 200);
+    })
 })
